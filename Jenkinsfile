@@ -15,7 +15,8 @@ pipeline {
 			script {			    
 				def scannerHome = tool 'jenkins';
     				withSonarQubeEnv() {
-      					sh "${scannerHome}/bin/sonar-scanner"
+      					//sh "${scannerHome}/bin/sonar-scanner"
+					sh "${scannerHome}/bin/sonar-scanner.bat -D"sonar.projectKey=jenkins" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.login=5b1583ae87b2c535ff27fcce6dd671dc6c80e3a9"
 				}
 				//sh "${mvnHome}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Sample:7899756022"
 			    }
