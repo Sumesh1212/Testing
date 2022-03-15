@@ -12,14 +12,14 @@ pipeline {
 		stage('Sonar scan execution') {
 		    // Run the sonar scan
 		    steps {
-			script {
-			    def mvnHome = tool 'jenkins'
-			    withSonarQubeEnv('jenkins') {
-
-				sh "${mvnHome}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Sample:7899756022"
+			script {			    
+				def scannerHome = tool 'jenkins';
+    				withSonarQubeEnv() {
+      					sh "${scannerHome}/bin/sonar-scanner"
+				}
+				//sh "${mvnHome}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Sample:7899756022"
 			    }
-			}
-		    }
+			}		    
 		}
 	}
 }
