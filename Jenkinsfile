@@ -18,7 +18,7 @@ pipeline {
 			    def mvnHome = tool 'SonarScanner 2.8'
 			    withSonarQubeEnv {
 
-				sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Sample:7899756022"
+				sh "${mvnHome}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Sample:7899756022"
 			    }
 			}
 		    }
