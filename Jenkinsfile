@@ -1,5 +1,5 @@
 pipeline {
-	agent any
+	agent { label 'linux' }
 	stages{
 		stage ('Git Install') {
 			steps{				
@@ -21,6 +21,7 @@ pipeline {
 					-Dsonar.host.url=http://localhost:9000 \
 					-Dsonar.login=5b1583ae87b2c535ff27fcce6dd671dc6c80e3a9"*/
 					//sh "${scannerHome}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=jenkins"
+					sh './mvnw clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
 				}
 				
 			    }
